@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if object %}Editar{% else %}Crear{% endif %} Videojuego</h2>
+<form method="post" class="card p-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'videojuego_list' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

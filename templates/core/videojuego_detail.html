@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Detalle del Registro #{{ videojuego.pk }}</div>
+    <div class="card-body">
+        <h3>{{ videojuego.titulo }}</h3>
+        <p><strong>Género:</strong> {{ videojuego.genero.nombre }}</p>
+        <p><strong>Precio:</strong> ${{ videojuego.precio }}</p>
+        <p><strong>Lanzamiento:</strong> {{ videojuego.fecha_lanzamiento }}</p>
+        <p><strong>En Stock:</strong> {{ videojuego.en_stock|yesno:"Sí,No" }}</p>
+        <a href="{% url 'videojuego_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

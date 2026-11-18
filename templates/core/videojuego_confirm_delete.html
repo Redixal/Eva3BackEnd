@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="alert alert-danger">
+    <h4>¿Estás seguro de eliminar "{{ object.titulo }}"?</h4>
+    <p>Esta acción eliminará el registro permanentemente de MySQL.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'videojuego_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
