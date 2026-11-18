@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Videojuego
@@ -16,19 +17,19 @@ class VideojuegoDetailView(DetailView):
     template_name = 'core/videojuego_detail.html'
     context_object_name = 'videojuego'
 
-class VideojuegoCreateView(CreateView):
+class VideojuegoCreateView(LoginRequiredMixin, CreateView):
     model = Videojuego
     form_class = VideojuegoForm
     template_name = 'core/videojuego_form.html'
     success_url = reverse_lazy('videojuego_list')
 
-class VideojuegoUpdateView(UpdateView):
+class VideojuegoUpdateView(LoginRequiredMixin, UpdateView):
     model = Videojuego
     form_class = VideojuegoForm
     template_name = 'core/videojuego_form.html'
     success_url = reverse_lazy('videojuego_list')
 
-class VideojuegoDeleteView(DeleteView):
+class VideojuegoDeleteView(LoginRequiredMixin, DeleteView):
     model = Videojuego
     template_name = 'core/videojuego_confirm_delete.html'
     success_url = reverse_lazy('videojuego_list')
